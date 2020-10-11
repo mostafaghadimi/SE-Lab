@@ -1,3 +1,4 @@
+import impl.Rectangle;
 import org.junit.Test;
 import org.junit.Assert;
 

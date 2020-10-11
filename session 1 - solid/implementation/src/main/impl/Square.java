@@ -1,3 +1,7 @@
+package impl;
+
+import interfaces.Shape;
+
 public class Square implements Shape {
     private double side;
 
