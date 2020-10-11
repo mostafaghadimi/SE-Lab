@@ -4,7 +4,7 @@ import main.Square;
 import org.junit.Test;
 import org.junit.Assert;
 
-public class RectangleJUnit {
+public class SquareJUnit {
     @Test
     public void computeArea(){
         Shape square = new Square(5);
