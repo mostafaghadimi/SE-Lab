@@ -1,14 +1,11 @@
-package main;
-import main.Shape;
-
 public class Square implements Shape {
     private double side;
 
-    public int getSide() {
+    public double getSide() {
         return side;
     }
 
-    public void setSide(int side) {
+    public void setSide(double side) {
         this.side = side;
     }
 
@@ -16,8 +13,8 @@ public class Square implements Shape {
         this.setSide(side);
     }
 
-    double computeArea() {
-        return getSide() * getSide();
+    public double computeArea() {
+        return this.getSide() * this.getSide();
     }
 
 }

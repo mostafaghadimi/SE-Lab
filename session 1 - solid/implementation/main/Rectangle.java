@@ -1,6 +1,3 @@
-package main;
-import main.Shape;
-
 public class Rectangle implements Shape {
     private double width;
     private double height;
@@ -26,8 +23,8 @@ public class Rectangle implements Shape {
         this.setHeight(height);
     }
 
-    double computeArea(){
-        return getWidth() * getHeight();
+    public double computeArea(){
+        return this.getWidth() * this.getHeight();
     }
 
 }

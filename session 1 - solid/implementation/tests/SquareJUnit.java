@@ -1,22 +1,18 @@
-package test;
-import main.Shape;
-import main.Square;
 import org.junit.Test;
 import org.junit.Assert;
 
 public class SquareJUnit {
     @Test
     public void computeArea(){
-        Shape square = new Square(5);
+        Square square = new Square(5);
         double area = square.computeArea();
-        Assert.assertEquals(25.0, sarea);
+        Assert.assertEquals(25.0, area);
     }
 
     @Test
     public void changeParameter() {
-        Shape square = new Square(2);
-        rectangle.setSide(4);
+        Square square = new Square(2);
+        square.setSide(4);
         Assert.assertEquals(4.0, square.getSide());
     }
 }
-
