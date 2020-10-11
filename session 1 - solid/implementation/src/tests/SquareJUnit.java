@@ -8,14 +8,14 @@ public class SquareJUnit {
     public void computeArea(){
         Shape square = new Square(5);
         double area = square.computeArea();
-        Assert.assertEquals(25.0, area);
+        Assert.assertEquals(25.0, area, 0.0);
     }
 
     @Test
     public void changeParameter() {
         Square square = new Square(2);
         square.setSide(4);
-        Assert.assertEquals(4.0, square.getSide());
+        Assert.assertEquals(4.0, square.getSide(), 0.0);
     }
 }
 

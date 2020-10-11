@@ -28,16 +28,23 @@
 public class RectangleJUnit {
 	@Test
 	public void computeArea(){
-		Shape rectangle = new Rectangle(2, 3);
+		Rectangle rectangle = new Rectangle(2, 3);
 		double area = rectangle.computeArea();
-		Assert.assertEquals(6.0, area);
+		Assert.assertEquals(6.0, area, 0.0);
 	}
 	
 	@Test
-	public void changeParameter() {
-		Shape rectangle = new Rectangle(3, 4);
+	public void changeWidth() {
+		Rectangle rectangle = new Rectangle(3, 4);
 		rectangle.setWidth(5);
-		Assert.assertEquals(5, rectangle.getWidth());
+		Assert.assertEquals(5, rectangle.getWidth(), 0.0);
+	}
+	
+	@Test
+	public void changeHeight() {
+		Rectangle rectangle = new Rectangle(3, 4);
+		rectangle.setHeight(6);
+		Assert.assertEquals(6, rectangle.getHeight(), 0.0);
 	}
 }
 \end{Verbatim}
@@ -49,16 +56,17 @@ public class SquareJUnit {
 	public void computeArea(){
 		Shape square = new Square(5);
 		double area = square.computeArea();
-		Assert.assertEquals(25.0, sarea);
+		Assert.assertEquals(25.0, area, 0.0);
 	}
-
+	
 	@Test
 	public void changeParameter() {
-		Shape square = new Square(2);
-		rectangle.setSide(4);
-		Assert.assertEquals(4.0, square.getSide());
+		Square square = new Square(2);
+		square.setSide(4);
+		Assert.assertEquals(4.0, square.getSide(), 0.0);
 	}
 }
+
 \end{Verbatim}
 
 \newpage
@@ -103,8 +111,8 @@ public class Rectangle implements Shape {
 		this.setHeight(height);
 	}
 	
-	double computeArea(){
-		return getWidth() * getHeight();
+	public double computeArea(){
+		return this.getWidth() * this.getHeight();
 	}
 
 }
@@ -116,11 +124,11 @@ public class Rectangle implements Shape {
 public class Square implements Shape {
 	private double side;
 	
-	public int getSide() {
+	public double getSide() {
 		return side;
 	}
 	
-	public void setSide(int side) {
+	public void setSide(double side) {
 		this.side = side;
 	}
 	
@@ -128,8 +136,8 @@ public class Square implements Shape {
 		this.setSide(side);
 	}
 	
-	double computeArea() {
-		return getSide() * getSide();
+	public double computeArea() {
+		return this.getSide() * this.getSide();
 	}
 
 }
@@ -142,6 +150,6 @@ public class Square implements Shape {
 	\item \textbf{\lr{Single Responsibility Principle}}: این اصل برقرار است. زیرا هر کدام از کلاس‌های مستطیل و مربع فقط به یک کنش‌گر جواب‌گو هستند؛ به عبارت دیگر، از هر کدام از متدها فقط یک کنش‌گر استفاده می‌کند. 
 	\item \textbf{\lr{Open Closed Principle}}: با توجه به این‌که هر دو کلاس مستطیل و مربع نسبت به تغییرات در منطقشان بسته هستند و در صورتی که بنا به دلایلی در آینده به ارث بخواهند برسند، امکان اضافه کردن قابلیت به آن‌ها وجود دارد.
 	\item \textbf{\lr{Liskov Substitution Principle}}: اگر در این قسمت \lr{Interface} را به عنوان کلاس پدر در نظر بگیریم، هر دو کلاس مربع و مستطیل قابلیت جای‌نشینی را دارند. زیرا \lr{precondition}ها قوی‌تر نشده است و هم‌چنین \lr{postcondition}های آن ضعیف‌تر نشده است.
-	\item \textbf{Interface Segregation Principle}: به دلیل این‌که در این قسمت فقط یک \lr{Interface} داریم، این اصل نیز رعایت می‌شود.
-	\item \textbf{Dependency Inversion Principle}: همان‌طور که قبلا توضیح داده شد، به دلیل اشتراکاتی که کلاس مربع و کلاس مستطیل دارند، به جای ارث‌بری از یک‌دیگر، از یک واسط برای آن‌ها استفاده کردیم و این اصل رعایت شد.
+	\item \textbf{\lr{Interface Segregation Principle}}: به دلیل این‌که در این قسمت فقط یک \lr{Interface} داریم، این اصل نیز رعایت می‌شود.
+	\item \textbf{\lr{Dependency Inversion Principle}}: همان‌طور که قبلا توضیح داده شد، به دلیل اشتراکاتی که کلاس مربع و کلاس مستطیل دارند، به جای ارث‌بری از یک‌دیگر، از یک واسط برای آن‌ها استفاده کردیم و این اصل رعایت شد.
 \end{itemize}
