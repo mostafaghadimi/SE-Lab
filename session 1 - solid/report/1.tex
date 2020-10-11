@@ -23,51 +23,207 @@
 
 برای هر کدام از شکل‌ها باید تستی متناظر با آن را بنویسیم و مقداری که از خروجی آن انتظار می‌رود را امتحان کنیم. لذا مقدار مورد انتظار را با استفاده از متد \lr{assertEquals} از کلاس \lr{Assert} به کار می‌بریم. 
 
-\subsection*{تست مستطیل}
+\subsection*{تست محاسبه مساحت مستطیل}
 \begin{Verbatim}[tabsize=4]
 public class RectangleJUnit {
 	@Test
 	public void computeArea(){
 		Rectangle rectangle = new Rectangle(2, 3);
 		double area = rectangle.computeArea();
-		Assert.assertEquals(6.0, area, 0.0);
+		Assert.assertEquals(6.0, area, 0.0 );
+	}
+}
+\end{Verbatim}
+
+\subsection*{کد محاسبه مساحت مستطیل}
+\begin{Verbatim}[tabsize=4]
+public class Rectangle {
+	private double width;
+	private double height;
+
+	public Rectangle(double width, double height) {
+		this.width = width;
+		this.height = height;
+	}
+	
+	public double computeArea(){
+		return this.width * this.height();
+	}
+}
+\end{Verbatim}
+
+\subsection*{تست تغییر طول مستطیل}
+\begin{Verbatim}[tabsize=4]
+public class RectangleJUnit {
+	@Test
+	public void changeWidth() {
+		Rectangle rectangle = new Rectangle(3, 4);
+		rectangle.setWidth(5);
+		Assert.assertEquals(5, rectangle.getWidth(), 0.0 );
+	}
+}
+\end{Verbatim}
+
+
+\subsection*{تست تغییر عرض مستطیل}
+\begin{Verbatim}[tabsize=4]
+public class RectangleJUnit {
+	@Test
+	public void changeHeight() {
+		Rectangle rectangle = new Rectangle(3, 4);
+		rectangle.setHeight(6);
+		Assert.assertEquals(6, rectangle.getHeight(), 0.0 );
+	}
+}
+\end{Verbatim}
+
+
+\subsection*{تست کلی مستطیل}
+\begin{Verbatim}[tabsize=4]
+public class RectangleJUnit {
+	@Test
+	public void computeArea(){
+		Rectangle rectangle = new Rectangle(2, 3);
+		double area = rectangle.computeArea();
+		Assert.assertEquals(6.0, area, 0.0 );
 	}
 	
 	@Test
 	public void changeWidth() {
 		Rectangle rectangle = new Rectangle(3, 4);
 		rectangle.setWidth(5);
-		Assert.assertEquals(5, rectangle.getWidth(), 0.0);
+		Assert.assertEquals(5, rectangle.getWidth(), 0.0 );
 	}
 	
 	@Test
 	public void changeHeight() {
 		Rectangle rectangle = new Rectangle(3, 4);
 		rectangle.setHeight(6);
-		Assert.assertEquals(6, rectangle.getHeight(), 0.0);
+		Assert.assertEquals(6, rectangle.getHeight(), 0.0 );
 	}
 }
 \end{Verbatim}
 
-\subsection*{تست مربع}
+\subsection*{تست محاسبه مساحت مربع}
 \begin{Verbatim}
 public class SquareJUnit {
 	@Test
 	public void computeArea(){
 		Shape square = new Square(5);
 		double area = square.computeArea();
-		Assert.assertEquals(25.0, area, 0.0);
+		Assert.assertEquals(25.0, area, 0.0 );
+	}
+}
+\end{Verbatim}
+در این قسمت چون کلاس مربع نیز اضافه شده است، برای برقراری اصل \lr{DIP} باید یک \lr{Interface} تعریف کرده و سپس مساحت را به‌گونه‌ی زیر برای کلاس مربع محاسبه کنیم
+\subsection*{کد محاسبه مساحت مربع}
+\begin{Verbatim}
+public class Square implements Shape {
+	private double side;
+	
+	public double computeArea() {
+		return this.side * this.side;
+	}
+}
+\end{Verbatim}
+
+\subsection*{تست تغییر ضلع مربع}
+\begin{Verbatim}
+public class SquareJUnit {
+	@Test
+	public void changeParameter() {
+		Square square = new Square(2);
+		square.setSide(4);
+		Assert.assertEquals(4.0, square.getSide(), 0.0 );
+	}
+}
+\end{Verbatim}
+
+\subsection*{تست کلی مربع}
+\begin{Verbatim}
+public class SquareJUnit {
+	@Test
+	public void computeArea(){
+		Shape square = new Square(5);
+		double area = square.computeArea();
+		Assert.assertEquals(25.0, area, 0.0 );
 	}
 	
 	@Test
 	public void changeParameter() {
 		Square square = new Square(2);
 		square.setSide(4);
-		Assert.assertEquals(4.0, square.getSide(), 0.0);
+		Assert.assertEquals(4.0, square.getSide(), 0.0 );
 	}
 }
-
 \end{Verbatim}
+
+\subsection*{کد مربوط به رابط شکل}
+\begin{Verbatim}
+public interface Shape {
+	double computeArea();
+}
+\end{Verbatim}
+
+\subsection*{کد مربوط به مستطیل بعد از تغییر}
+\begin{Verbatim}
+public class Rectangle implements Shape {
+	private double width;
+	private double height;
+	
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
+	public double getWidth() {
+		return width;
+	}
+	
+	public double getHeight() {
+		return height;
+	}
+	
+	public Rectangle(double width, double height) {
+		this.setWidth(width);
+		this.setHeight(height);
+	}
+	
+	public double computeArea(){
+		return this.getWidth() * this.getHeight();
+	}
+
+}
+\end{Verbatim}
+
+
+\subsection*{کد مربوط به مربع بعد از تغییر}
+\begin{Verbatim}
+public class Square implements Shape {
+	private double side;
+	
+	public double getSide() {
+		return side;
+	}
+	
+	public void setSide(double side) {
+		this.side = side;
+	}
+	
+	public Square(double side){
+		this.setSide(side);
+	}
+	
+	public double computeArea() {
+		return this.getSide() * this.getSide();
+	}
+
+}
+\end{Verbatim}
+
 
 \newpage
 \سؤال{اضافه کردن کد اصلی برنامه}
@@ -82,6 +238,8 @@ public interface Shape {
 	double computeArea();
 }
 \end{Verbatim}
+
+
 
 \subsection*{کد \lr{Rectangle}}
 
@@ -114,7 +272,6 @@ public class Rectangle implements Shape {
 	public double computeArea(){
 		return this.getWidth() * this.getHeight();
 	}
-
 }
 \end{Verbatim}
 
