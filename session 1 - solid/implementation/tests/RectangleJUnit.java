@@ -16,7 +16,7 @@ public class RectangleJUnit {
     public void changeParameter() {
         Shape rectangle = new Rectangle(3, 4);
         rectangle.setWidth(5);
-        Assert.assertEquals(5, rectangle.getWidth())
+        Assert.assertEquals(5, rectangle.getWidth());
     }
 }
 
