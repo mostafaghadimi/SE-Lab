@@ -30,8 +30,4 @@ public class Rectangle implements Shape {
         return getWidth() * getHeight();
     }
 
-    void changeParameter(double width, double height) {
-        this.setWidth(width);
-        this.setHeight(height);
-    }
 }

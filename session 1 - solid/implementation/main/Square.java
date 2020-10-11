@@ -20,7 +20,4 @@ public class Square implements Shape {
         return getSide() * getSide();
     }
 
-    void changeParameter(double side) {
-        this.setSide(side);
-    }
 }
