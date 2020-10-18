@@ -8,7 +8,7 @@ import org.junit.Assert;
 public class PowerTest {
     @Test
     public void testPower() {
-        Power power = new PowerImplStandard(new MultImplStandard(3, 4));
-        Assert.assertEquals();
+        Power power = new PowerImplStandard(new MultImplStandard());
+        Assert.assertEquals(12, power.power(3, 4), 0);
     }
 }
