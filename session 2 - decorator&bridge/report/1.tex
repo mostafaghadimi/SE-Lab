@@ -1,0 +1,216 @@
+\سؤال{\lr{Decorator}}
+
+برای نوشتن این کلاس‌ها، همان‌طور که در ویدیوی آموزشی گفته شد، یک مجموعه تست به ما داده شده است و باید قدم به قدم و مرحله به مرحله شروع به برطرف کردن خطاها کنیم تا در نهایت همه‌ی تست‌ها پاس شوند.
+
+باید یک \lr{interface} به نام \lr{Beverage} ایجاد کنیم که یک فیلد به نام \lr{description} دارد و  سه متد \lr{getDescription}، \lr{cost} را پیاده‌سازی کرده است. 
+
+\begin{Verbatim}[tabsize=4]
+public interface Beverage {
+	public String description = null;
+	public String getDescription();
+	public Double cost();
+}
+\end{Verbatim}
+
+حال باید چهار کلاس \lr{HouseBlend}، \lr{DarkRoast}، \lr{Espresso} و \lr{Decaf} را ایجاد نماییم و جزئیات (شامل اسم و قیمت با توجه به تست‌های داده‌شده) را اضافه کنیم. برای مثال کلاس \lr{Espresso} به شکل زیر است:
+
+\begin{Verbatim}[tabsize=4]
+public class Espresso implements Beverage {
+	@Override
+	public String getDescription() {
+		return "Delicious Espresso";
+	}
+	
+	@Override
+	public Double cost() {
+		return 1.99 ;
+	}
+}
+\end{Verbatim}
+
+در این مرحله باید یک کلاس \lr{decorator} به نام \lr{CondimentDecorator} را اضافه کنیم تا با ارتباطی که با \lr{Beverage} دارد، قابلیت انعطاف و پویایی را اضافه کند. 
+
+
+
+\begin{Verbatim}[tabsize=4]
+public abstract class CondimentDecorator  implements Beverage {
+	private Beverage beverage;
+	
+	public CondimentDecorator(Beverage beverage) {
+		this.beverage = beverage;
+	}
+	
+	@Override
+	public String getDescription() {
+		return beverage.getDescription();
+	}
+	
+	@Override
+	public Double cost() {
+		return beverage.cost();
+	}
+}
+\end{Verbatim}
+
+حال با استفاده از \lr{super} در زیر کلاس‌های مربوط به \lr{decorator} این پویایی به برنامه اضافه می‌شود.
+
+برای مثال، کلاس \lr{Mocha} به شکل زیر است:
+
+\begin{Verbatim}[tabsize=4]
+public class Mocha extends CondimentDecorator {
+
+	public Mocha(Beverage beverage) {
+		super(beverage);
+	}
+	
+	public String getDescription() {
+		return super.getDescription() + " with mocha";
+	}
+	
+	public Double cost() {
+		return super.cost() + 0.20 ;
+	}
+}
+\end{Verbatim}
+در نهایت تمامی تست‌ها پاس شد.
+
+\newpage
+\سؤال{\lr{Bridge}}
+
+در این قسمت، برای این‌که کارها و مسئولیت‌ها را به کلاس‌های متفاوت (\lr{Abstract} و پیاده‌سازی‌ها) را از یک‌دیگر جدا کنیم، از این الگوی طراحی استفاده می‌کنیم.
+
+با توجه به \lr{Test Driven Development} ابتدا باید تست‌ها را طراحی کنیم و سپس اقدام به نوشتن منطق برنامه کنیم.
+
+\begin{Verbatim}[tabsize=4]
+public class PowerTest {
+	@Test
+	public void testPowerStandardRecursive() {
+		Power power = new PowerImplStandard(new MultImplRecursive());
+		Assert.assertEquals(81, power.power(3, 4), 0) ;
+	}
+	
+	@Test
+	public void testPowerRecursiveRecursive() {
+		Power power = new PowerImplRecursive(new MultImplRecursive());
+		Assert.assertEquals(81, power.power(3, 4), 0) ;
+	}
+	
+	@Test
+	public void testPowerRecursiveStandard(){
+		Power power = new PowerImplRecursive(new MultImplStandard());
+		Assert.assertEquals(81, power.power(3, 4), 0) ;
+	}
+	
+	@Test
+	public void testPowerStandardStandard(){
+		Power power = new PowerImplStandard(new MultImplStandard());
+		Assert.assertEquals(81, power.power(3, 4), 0) ;
+	}
+}
+
+\end{Verbatim}
+
+کلاس مربوط به توان را \lr{Abstract} در نظر می‌گیریم زیرا باید یک فیلد از \lr{Interface} ضرب داشته باشد و در جایی که نیاز داریم، از پیاده‌سازی‌ها مربوط به آن استفاده کند:
+
+\begin{Verbatim}[tabsize=4]
+public abstract class Power {
+	protected Mult mult;
+	
+	public Power(Mult mult) {
+		this.mult = mult;
+	}
+	
+	public abstract Integer power(int a, int b);
+}
+
+\end{Verbatim}
+
+در قسمت بعدی \lr{interface} ضرب را پیاده‌سازی می‌کنیم:
+
+\begin{Verbatim}[tabsize=4]
+public interface Mult {
+	public Integer mult(int a, int b);
+}
+\end{Verbatim}
+
+حال کافی است پیاده‌سازی‌های مختلف ضرب و توان را به کار ببندیم.
+
+پیاده‌سازی‌های انجام شده:
+\begin{itemize}
+	\item پیاده‌سازی معمولی
+	\item پیاده‌سازی بازگشتی
+\end{itemize}
+
+\textbf{پیاده‌سازی بازگشتی ضرب}
+\begin{Verbatim}[tabsize=4]
+public class MultImplRecursive implements Mult {
+	@Override
+	public Integer mult(int a, int b) {
+		if (b == 0) {
+			return 0;
+		}
+		return a + mult(a, b - 1);
+	}
+}
+\end{Verbatim}
+
+\textbf{پیاده‌سازی معمولی ضرب}
+\begin{Verbatim}[tabsize=4]
+public class MultImplStandard implements Mult {
+	
+	@Override
+	public Integer mult(int a, int b) {
+		int result = 0;
+		
+		while(b != 0) {
+			result += a;
+			b -= 1;
+		}
+		
+		return result;
+	}
+}
+\end{Verbatim}
+
+
+\textbf{پیاده‌سازی بازگشتی توان}
+\begin{Verbatim}[tabsize=4]
+public class PowerImplRecursive extends Power {
+
+	public PowerImplRecursive(Mult mult) {
+		super(mult);
+	}
+	
+	@Override
+	public Integer power(int base, int exponent) {
+		if (exponent != 0) {
+			return mult.mult(base, power(base, exponent - 1));
+		}
+		else {
+			return 1;
+		}
+	}
+}
+\end{Verbatim}
+
+\textbf{پیاده‌سازی معمولی توان}:
+\begin{Verbatim}[tabsize=4]
+public class PowerImplStandard extends Power {
+	
+	public PowerImplStandard(Mult mult) {
+		super(mult);
+	}
+	
+	@Override
+	public Integer power(int base, int exponent) {
+		int result = 1;
+		while (exponent != 0) {
+			result = mult.mult(result, base);
+			--exponent;
+		}
+		return result;
+	}
+}
+\end{Verbatim}
+
+به این ترتیب تست‌های مربوط به این قسمت نیز پاس می‌شوند.
