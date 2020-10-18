@@ -3,7 +3,11 @@ package main.interfaces;
 import main.interfaces.Beverage;
 
 public abstract class CondimentDecorator  implements Beverage {
-    protected Beverage beverage;
+    private Beverage beverage;
+
+    public CondimentDecorator(Beverage beverage) {
+        this.beverage = beverage;
+    }
 
     @Override
     public String getDescription() {

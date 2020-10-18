@@ -5,11 +5,11 @@ import main.interfaces.Beverage;
 public class Decaf implements Beverage {
     @Override
     public String getDescription() {
-        return null;
+        return "Delicious Decaf";
     }
 
     @Override
     public Double cost() {
-        return null;
+        return 1.05;
     }
 }
