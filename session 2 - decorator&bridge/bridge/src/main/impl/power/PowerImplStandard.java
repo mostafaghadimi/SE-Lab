@@ -13,7 +13,7 @@ public class PowerImplStandard extends Power {
     public Integer power(int base, int exponent) {
         int result = 1;
         while (exponent != 0) {
-            result *= base;
+            result = mult.mult(result, base);
             --exponent;
         }
         return result;
