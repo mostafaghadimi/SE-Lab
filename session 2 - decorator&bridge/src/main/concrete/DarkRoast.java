@@ -1,6 +1,8 @@
-package main;
+package main.concrete;
 
-public class Whip implements Beverage{
+import main.interfaces.Beverage;
+
+public class DarkRoast implements Beverage {
     @Override
     public String getDescription() {
         return null;

@@ -1,4 +1,6 @@
-package main;
+package main.concrete;
+
+import main.interfaces.Beverage;
 
 public class HouseBlend implements Beverage {
 

@@ -1,6 +1,11 @@
 package tests;
 
-import main.*;
+import main.concrete.Espresso;
+import main.concrete.HouseBlend;
+import main.decorators.Mocha;
+import main.decorators.SteamedMilk;
+import main.decorators.Whip;
+import main.interfaces.Beverage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

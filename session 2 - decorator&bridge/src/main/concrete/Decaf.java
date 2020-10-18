@@ -1,6 +1,8 @@
-package main;
+package main.concrete;
 
-public class Mocha implements Beverage {
+import main.interfaces.Beverage;
+
+public class Decaf implements Beverage {
     @Override
     public String getDescription() {
         return null;
