@@ -38,9 +38,15 @@ public class AddTaskPresentation extends JSONPresentation {
         ArrayList<Task> allTasks = Task.getAll();
             for(Task t: allTasks) {
                 if (t.getStartDate().equals(newTask.getStartDate())) {
-                    if (t.getStartTime().compareTo(newTask.getStartTime()) < 0) {
-                        if ((newTask.getStartTime().compareTo(t.getEndTime()) <= 0  && t.getStartTime().compareTo(newTask.getStartTime()) <= 0) || (newTask.getEndTime().compareTo(t.getEndTime()) <= 0 && t.getStartTime().compareTo(newTask.getEndTime()) <= 0))
+                    if (t.getStartTime().compareTo(newTask.getStartTime()) <= 0) {
+                        if (newTask.getEndTime().compareTo(t.getEndTime()) <= 0) {
                             throw new IOException("Overlap with previous dates");
+                        }
+                    }
+                    else if (newTask.getStartTime().compareTo(t.getStartTime()) <= 0) {
+                        if (t.getEndTime().compareTo(newTask.getEndTime()) <= 0) {
+                            throw new IOException("Overlap with previous dates");
+                        }
                     }
                 }
             }

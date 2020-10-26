@@ -11,7 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28ec12c8-6a9c-41c5-94e5-86bb1a40239e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/selab/threetier/logic/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/selab/threetier/logic/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/selab/threetier/presentation/AddTaskPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/selab/threetier/presentation/AddTaskPresentation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
