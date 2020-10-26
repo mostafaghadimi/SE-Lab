@@ -10,10 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ec12c8-6a9c-41c5-94e5-86bb1a40239e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/selab/threetier/presentation/AddTaskPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/selab/threetier/presentation/AddTaskPresentation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/selab/threetier/presentation/RemoveTaskPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/selab/threetier/presentation/RemoveTaskPresentation.java" afterDir="false" />
-    </list>
+    <list default="true" id="28ec12c8-6a9c-41c5-94e5-86bb1a40239e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +37,8 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.capture" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -78,25 +77,41 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1815" height="278" key="GridCell.Tab.0.bottom" timestamp="1603669075882">
+    <state width="1815" height="344" key="GridCell.Tab.0.bottom" timestamp="1603672369934">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="278" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1603669075882" />
-    <state width="1815" height="278" key="GridCell.Tab.0.center" timestamp="1603669075882">
+    <state width="1815" height="344" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369934" />
+    <state width="1815" height="344" key="GridCell.Tab.0.center" timestamp="1603672369934">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="278" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1603669075882" />
-    <state width="1815" height="278" key="GridCell.Tab.0.left" timestamp="1603669075881">
+    <state width="1815" height="344" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369934" />
+    <state width="1815" height="344" key="GridCell.Tab.0.left" timestamp="1603672369934">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="278" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1603669075881" />
-    <state width="1815" height="278" key="GridCell.Tab.0.right" timestamp="1603669075882">
+    <state width="1815" height="344" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369934" />
+    <state width="1815" height="344" key="GridCell.Tab.0.right" timestamp="1603672369934">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="278" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1603669075882" />
-    <state x="472" y="130" width="1024" height="845" key="SettingsEditor" timestamp="1603668091175">
+    <state width="1815" height="344" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369934" />
+    <state width="1815" height="344" key="GridCell.Tab.1.bottom" timestamp="1603672369935">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="472" y="130" width="1024" height="845" key="SettingsEditor/59.27.1861.1053@59.27.1861.1053" timestamp="1603668091175" />
+    <state width="1815" height="344" key="GridCell.Tab.1.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369935" />
+    <state width="1815" height="344" key="GridCell.Tab.1.center" timestamp="1603672369935">
+      <screen x="59" y="27" width="1861" height="1053" />
+    </state>
+    <state width="1815" height="344" key="GridCell.Tab.1.center/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369935" />
+    <state width="1815" height="344" key="GridCell.Tab.1.left" timestamp="1603672369935">
+      <screen x="59" y="27" width="1861" height="1053" />
+    </state>
+    <state width="1815" height="344" key="GridCell.Tab.1.left/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369935" />
+    <state width="1815" height="344" key="GridCell.Tab.1.right" timestamp="1603672369935">
+      <screen x="59" y="27" width="1861" height="1053" />
+    </state>
+    <state width="1815" height="344" key="GridCell.Tab.1.right/59.27.1861.1053@59.27.1861.1053" timestamp="1603672369935" />
+    <state x="472" y="130" width="1024" height="845" key="SettingsEditor" timestamp="1603672233017">
+      <screen x="59" y="27" width="1861" height="1053" />
+    </state>
+    <state x="472" y="130" width="1024" height="845" key="SettingsEditor/59.27.1861.1053@59.27.1861.1053" timestamp="1603672233017" />
   </component>
 </project>

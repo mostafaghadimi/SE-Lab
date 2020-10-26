@@ -31,19 +31,19 @@ public class AddTaskPresentation extends JSONPresentation {
         } catch (ParseException ex) {
             throw new IOException("Invalid date/time format");
         }
-        if(newTask.getEndTime().compareTo(newTask.getStartDate())<= 0){
+        if (newTask.getEndTime().compareTo(newTask.getStartTime()) <= 0){
             throw new IOException("End time must be after Start time");
         }
 
         ArrayList<Task> allTasks = Task.getAll();
-        for(Task t: allTasks) {
-            if (t.getStartDate().equals(newTask.getStartDate())) {
-                if (t.getStartTime().compareTo(newTask.getStartTime()) < 0) {
-                    if ((newTask.getStartTime().compareTo(t.getEndTime()) <= 0  && t.getStartTime().compareTo(newTask.getStartTime()) <= 0) || (newTask.getEndTime().compareTo(t.getEndTime()) <= 0 && t.getStartTime().compareTo(newTask.getEndTime()) <= 0))
-                        throw new IOException("Overlap with previous dates");
-                }
-            }
-        }
+    //        for(Task t: allTasks) {
+    //            if (t.getStartDate().equals(newTask.getStartDate())) {
+    //                if (t.getStartTime().compareTo(newTask.getStartTime()) < 0) {
+    //                    if ((newTask.getStartTime().compareTo(t.getEndTime()) <= 0  && t.getStartTime().compareTo(newTask.getStartTime()) <= 0) || (newTask.getEndTime().compareTo(t.getEndTime()) <= 0 && t.getStartTime().compareTo(newTask.getEndTime()) <= 0))
+    //                        throw new IOException("Overlap with previous dates");
+    //                }
+    //            }
+    //        }
         newTask.save();
 
         Map<String, String> result = new HashMap<>();
