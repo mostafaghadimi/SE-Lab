@@ -40,7 +40,8 @@ public class Task extends Entity {
 
 
     public static ArrayList<Task> getAll() {
-        Collections.sort(Storage.getInstance().getTasks().getAll(), Comparator.comparing(Task::getStartTime));
+        Collections.sort(Storage.getInstance().getTasks().getAll(), Comparator.comparing(Task::getStartDate));
         return Storage.getInstance().getTasks().getAll();
+
     }
 }
