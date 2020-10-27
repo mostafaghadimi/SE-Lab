@@ -72,8 +72,12 @@ public class Course implements Model {
     }
 
     public String getStudents() {
-        // TODO: Return a comma separated list of student names
-        return "-";
+        ArrayList<String> students = new ArrayList<>();
+        for (Enrollment enrollment: this.enrollments.getAll()) {
+            students.add(enrollment.getStudent().getName());
+        }
+
+        return String.join(", ", students);
     }
 
     /**
