@@ -67,7 +67,18 @@ public class Course implements Model {
     }
 
     public float getAverage() {
-        // TODO: Calculate and return the average of the points
+        int counter = 0;
+        int summation = 0;
+
+        for(Enrollment enrollment: this.enrollments.getAll()) {
+            counter += 1;
+            summation += enrollment.getPoint();
+        }
+
+        if (counter > 0) {
+                return summation / counter;
+        }
+
         return 0;
     }
 
