@@ -22,4 +22,13 @@ public class DataSet<T extends Model> {
     public ArrayList<T> getAll() {
         return new ArrayList(set.values());
     }
+
+    public void remove(T entity) {
+        String key = entity.getPrimaryKey();
+        if (!set.containsKey(key))
+            throw new IllegalArgumentException("Primary Key not found!");
+
+        set.remove(key, entity);
+
+    }
 }

@@ -9,6 +9,9 @@ import java.util.regex.Pattern;
 public class Student implements Model {
     private String name;
     private String studentNo;
+
+
+
     private DataSet<Enrollment> enrollments = new DataSet<>();
 
     public void setEnrollment(Enrollment enrollment) {
@@ -58,6 +61,12 @@ public class Student implements Model {
         return String.join(", ", courses);
     }
 
+    public void removeFromCourse() {
+        for (Enrollment enrollment: this.enrollments.getAll()) {
+            enrollment.getCourse().removeEnrollment(enrollment);
+        }
+    }
+
     /**
      *
      * @param studentNo Student number to be checeked
@@ -67,7 +76,9 @@ public class Student implements Model {
         Pattern pattern = Pattern.compile("^[8-9]\\d{7}$");
         return pattern.matcher(studentNo).find();
     }
-    
 
 
+    public void removeEnrollment(Enrollment enrollment) {
+        this.enrollments.remove(enrollment);
+    }
 }

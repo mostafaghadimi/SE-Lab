@@ -19,6 +19,7 @@ public class Course implements Model {
         this.enrollments.add(enrollment);
     }
 
+
     @Override
     public String getPrimaryKey() {
         return this.courseNo;
@@ -129,5 +130,15 @@ public class Course implements Model {
             return 0;
         else
             return -1;
+    }
+
+    public void removeFromStudent() {
+        for (Enrollment enrollment: this.enrollments.getAll()) {
+            enrollment.getStudent().removeEnrollment(enrollment);
+        }
+    }
+
+    public void removeEnrollment(Enrollment enrollment) {
+        this.enrollments.remove(enrollment);
     }
 }
