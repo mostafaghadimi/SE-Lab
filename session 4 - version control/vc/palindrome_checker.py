@@ -7,6 +7,7 @@ def digit_counter(number):
         number /= 10
     return counter
 
+
 def palindrome_checker(number):
     digit_no = digit_counter(number)
     for i in range((digit_no + 1) // 2):
@@ -15,5 +16,7 @@ def palindrome_checker(number):
         
     return True
 
+
 number = int(input())
 palindrome_checker(number)
+
