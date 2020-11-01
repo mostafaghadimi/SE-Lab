@@ -16,3 +16,4 @@ def palindrome_checker(number):
     return True
 
 number = int(input())
+print(palindrome_checker(number))
