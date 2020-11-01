@@ -7,4 +7,5 @@ def digit_counter(number):
         number /= 10
     return counter
 
+
 number = int(input())
