@@ -20,11 +20,13 @@ def palindrome_checker(number):
     return True
 
 
-number = int(input())
-
-res = palindrome_checker(number)
-if res:
-    print("The input is palindrome.")
-else:
-    print("The input is not palindrome.")
+try:
+    number = int(input("Please type a number:"))
+    res = palindrome_checker(number)
+    if res:
+        print("The input is palindrome")
+    else:
+        print("The input is not palindrome")
+except ValueError:
+   print("The input is not an int!")
 
