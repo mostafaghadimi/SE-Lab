@@ -21,6 +21,9 @@ def palindrome_checker(number):
 
 
 number = int(input())
-print(palindrome_checker(number))
-palindrome_checker(number)
+res = palindrome_checker(number)
+if res:
+    print("The input is palindrome.")
+else:
+    print("The input is not palindrome.")
 
