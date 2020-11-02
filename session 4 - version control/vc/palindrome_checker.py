@@ -11,7 +11,10 @@ def digit_counter(number):
 def palindrome_checker(number):
     digit_no = digit_counter(number)
     for i in range((digit_no + 1) // 2):
-        if ((number // 10 ** (i)) % 10  != (number // 10 **(digit_no - i - 1)) % 10):
+        left_i = (number // 10 ** (i)) % 10
+        right_i = (number // 10 **(digit_no - i - 1)) % 10
+
+        if left_i != right_i:
             return False
         
     return True
