@@ -1,14 +1,15 @@
 package semantic.symbol;
 
 
-import codeGenerator.Address;
-import codeGenerator.Memory;
-import codeGenerator.TypeAddress;
-import codeGenerator.varType;
-import errorHandler.ErrorHandler;
+import codegenerator.Address;
+import codegenerator.Memory;
+import codegenerator.TypeAddress;
+import codegenerator.VarType;
+import errorhandler.ErrorHandlerUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SymbolTable {
@@ -21,8 +22,8 @@ public class SymbolTable {
         mem = memory;
         klasses = new HashMap<>();
         keyWords = new HashMap<>();
-        keyWords.put("true", new Address(1, varType.Bool, TypeAddress.Imidiate));
-        keyWords.put("false", new Address(0, varType.Bool, TypeAddress.Imidiate));
+        keyWords.put("true", new Address(1, VarType.Bool, TypeAddress.Imidiate));
+        keyWords.put("false", new Address(0, VarType.Bool, TypeAddress.Imidiate));
     }
 
     public void setLastType(SymbolType type) {
@@ -31,7 +32,7 @@ public class SymbolTable {
 
     public void addClass(String className) {
         if (klasses.containsKey(className)) {
-            ErrorHandler.printError("This class already defined");
+            ErrorHandlerUtils.printError("This class already defined");
         }
         klasses.put(className, new Klass());
     }
@@ -42,7 +43,7 @@ public class SymbolTable {
 
     public void addMethod(String className, String methodName, int address) {
         if (klasses.get(className).Methodes.containsKey(methodName)) {
-            ErrorHandler.printError("This method already defined");
+            ErrorHandlerUtils.printError("This method already defined");
         }
         klasses.get(className).Methodes.put(methodName, new Method(address, lastType));
     }
@@ -54,7 +55,7 @@ public class SymbolTable {
     public void addMethodLocalVariable(String className, String methodName, String localVariableName) {
 //        try {
             if (klasses.get(className).Methodes.get(methodName).localVariable.containsKey(localVariableName)) {
-                ErrorHandler.printError("This variable already defined");
+                ErrorHandlerUtils.printError("This variable already defined");
             }
             klasses.get(className).Methodes.get(methodName).localVariable.put(localVariableName, new Symbol(lastType, mem.getDateAddress()));
 //        }catch (NullPointerException e){
@@ -82,8 +83,9 @@ public class SymbolTable {
 
     public Symbol get(String className, String methodName, String variable) {
         Symbol res = klasses.get(className).Methodes.get(methodName).getVariable(variable);
-        if (res == null)
+        if (res == null) {
             res = get(variable, className);
+        }
         return res;
     }
 
@@ -147,7 +149,7 @@ public class SymbolTable {
         public int codeAddress;
         public Map<String, Symbol> parameters;
         public Map<String, Symbol> localVariable;
-        private ArrayList<String> orderdParameters;
+        private List<String> orderdParameters;
         public int callerAddress;
         public int returnAddress;
         public SymbolType returnType;
@@ -164,10 +166,12 @@ public class SymbolTable {
         }
 
         public Symbol getVariable(String variableName) {
-            if (parameters.containsKey(variableName))
+            if (parameters.containsKey(variableName)) {
                 return parameters.get(variableName);
-            if (localVariable.containsKey(variableName))
+            }
+            if (localVariable.containsKey(variableName)) {
                 return localVariable.get(variableName);
+            }
             return null;
         }
 

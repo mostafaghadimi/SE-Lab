@@ -1,10 +1,12 @@
+package main;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import parser.Parser;
 
-public class Main {
+public abstract class Main {
   public static void main(String[] args) {
 
     Parser parser = new Parser();

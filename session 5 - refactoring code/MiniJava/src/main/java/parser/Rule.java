@@ -1,11 +1,9 @@
 package parser;
 
-import Log.Log;
 import scanner.token.Token;
-import scanner.type.Type;
 
-import java.lang.management.GarbageCollectorMXBean;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mohammad hosein on 6/25/2015.
@@ -31,8 +29,8 @@ public class Rule {
 //        }
         RHS = new ArrayList<GrammarSymbol>();
         if (splited.length > 1) {
-            String[] RHSs = splited[1].split(" ");
-            for (String s : RHSs){
+            String[] rhss = splited[1].split(" ");
+            for (String s : rhss){
                 try {
                     RHS.add(new GrammarSymbol(NonTerminal.valueOf(s)));
                 } catch (Exception e) {
@@ -47,7 +45,7 @@ public class Rule {
         }
     }
     public NonTerminal LHS;
-    public ArrayList<GrammarSymbol> RHS;
+    public List<GrammarSymbol> RHS;
     public int semanticAction;
 }
 
