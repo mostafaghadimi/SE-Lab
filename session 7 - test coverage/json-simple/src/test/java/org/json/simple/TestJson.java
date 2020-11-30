@@ -315,4 +315,29 @@ public class TestJson {
 		JSONArray.writeJSONString(new Object[] { "Hello", new Integer(12), new int[] { 1, 2, 3} }, writer);
 		assertEquals("[\"Hello\",12,[1,2,3]]", writer.toString());
 	}
+
+	@Test
+	public void testArraysOfArrays() throws IOException {
+
+		StringWriter writer;
+
+		final int[][][] nestedIntArray = new int[][][]{{{1}, {5}}, {{2}, {6}}};
+		final String expectedNestedIntString = "[[[1],[5]],[[2],[6]]]";
+
+		assertEquals(expectedNestedIntString, JSONValue.toJSONString(nestedIntArray));
+
+		writer = new StringWriter();
+		JSONValue.writeJSONString(nestedIntArray, writer);
+		assertEquals(expectedNestedIntString, writer.toString());
+
+		final String[][] nestedStringArray = new String[][]{{"a", "b"}, {"c", "d"}};
+		final String expectedNestedStringString = "[[\"a\",\"b\"],[\"c\",\"d\"]]";
+
+		assertEquals(expectedNestedStringString, JSONValue.toJSONString(nestedStringArray));
+
+		writer = new StringWriter();
+		JSONValue.writeJSONString(nestedStringArray, writer);
+		assertEquals(expectedNestedStringString, writer.toString());
+	}
+
 }
